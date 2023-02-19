@@ -8,6 +8,7 @@ import cookieParser from "cookie-parser";
 import {engine} from "express-handlebars";
 import { args } from './minimist/minimist.config';
 import os from "os";
+import cors from "cors";
 
 export class Config {
     public static readonly PORT: number = args.p;
@@ -25,6 +26,7 @@ export class Config {
         app.set("views", TEMPLATEFOLDER)
         app.set("view engine", "handlebars")
         app.use(cookieParser());
+        app.use(cors())
         app.use(session({
             store: MongoStore.create({mongoUrl: process.env.MONGODB_URL}),
             secret: "dfvartg4wfqR3EFRQ3",

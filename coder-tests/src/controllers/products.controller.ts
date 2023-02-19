@@ -8,6 +8,38 @@ import { SocketService } from '../services/socket.service';
 
 
 
+
+export const getProducts :Controller =  async (req :Request|any, res :Response|any) => {
+    try {
+        const productManager = createManager(MANAGERTYPE.PRODUCTS);
+        if(productManager === null) {
+            throw new Error("Failed to create product manager");
+        }
+        productManager.getObjects().then((products:any[]) => {
+            let productDTO :ProductDTO[] = products.map((product:any) => {return new ProductDTO(product)});
+            res.send({success: true, products: productDTO})
+        })
+        .catch(err => {
+            errorLogger.error({
+                message: "Failed to get products",
+                error: err,
+                url: req.url,
+                method: req.method
+            });
+            res.send({success: false, message: err || "Failed to get products"})
+        })
+    }
+    catch(err) {
+        errorLogger.error({
+            message: "Failed to get products",
+            error: err,
+            url: req.url,
+            method: req.method
+        });
+        res.send({success: false, message: err || "Failed to get products"})
+    }
+}
+
 export const newProduct :Controller =  async (req :Request|any, res :Response|any) => {
     try {
         const io = SocketService.getInstance().getSocketServer();
