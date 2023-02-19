@@ -6,6 +6,7 @@
 	"scripts": {
 		"test": "nodemon src/server.ts",
 		"start": "ts-node src/server.ts",
+        "start-axios-client": "php -S localhost:4200 -t axios-client/",
 		"start-mongo": "ts-node src/server.ts -p 4000 -d MONGO",
 		"start-sqlite": "ts-node src/server.ts -p 4000 -d SQLITE",
 		"start-fork": "nodemon src/server.ts -p 4000 -m FORK",
