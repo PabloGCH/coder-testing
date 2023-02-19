@@ -25,8 +25,8 @@ export class Config {
         app.engine("handlebars", engine())
         app.set("views", TEMPLATEFOLDER)
         app.set("view engine", "handlebars")
+        app.use(cors({credentials: true, origin: "http://localhost:4200"}));
         app.use(cookieParser());
-        app.use(cors())
         app.use(session({
             store: MongoStore.create({mongoUrl: process.env.MONGODB_URL}),
             secret: "dfvartg4wfqR3EFRQ3",

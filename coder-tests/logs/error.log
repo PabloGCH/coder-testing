@@ -17,3 +17,19 @@
   url: '/newMessage',
   method: 'POST'
 }
+[2023-02-18T22:58:28.276] [ERROR] errors - { message: 'User not logged in', url: '/product', method: 'POST' }
+[2023-02-19T00:53:31.619] [ERROR] errors - { message: 'User not logged in', url: '/product', method: 'POST' }
+[2023-02-19T00:54:01.762] [ERROR] errors - { message: 'User not logged in', url: '/product', method: 'POST' }
+[2023-02-19T00:54:12.983] [ERROR] errors - { message: 'User not logged in', url: '/product', method: 'POST' }
+[2023-02-19T00:54:37.671] [ERROR] errors - { message: 'User not logged in', url: '/product', method: 'POST' }
+[2023-02-19T00:56:11.034] [ERROR] errors - { message: 'User not logged in', url: '/product', method: 'POST' }
+[2023-02-19T00:56:49.960] [ERROR] errors - { message: 'User not logged in', url: '/product', method: 'POST' }
+[2023-02-19T00:57:09.968] [ERROR] errors - { message: 'User not logged in', url: '/product', method: 'POST' }
+[2023-02-19T00:57:11.129] [ERROR] errors - { message: 'User not logged in', url: '/product', method: 'POST' }
+[2023-02-19T00:57:17.606] [ERROR] errors - { message: 'User not logged in', url: '/product', method: 'POST' }
+[2023-02-19T00:57:18.618] [ERROR] errors - { message: 'User not logged in', url: '/product', method: 'POST' }
+[2023-02-19T00:57:19.551] [ERROR] errors - { message: 'User not logged in', url: '/product', method: 'POST' }
+[2023-02-19T00:57:20.449] [ERROR] errors - { message: 'User not logged in', url: '/product', method: 'POST' }
+[2023-02-19T00:57:21.268] [ERROR] errors - { message: 'User not logged in', url: '/product', method: 'POST' }
+[2023-02-19T00:57:22.165] [ERROR] errors - { message: 'User not logged in', url: '/product', method: 'POST' }
+[2023-02-19T00:57:36.220] [ERROR] errors - { message: 'User not logged in', url: '/product', method: 'POST' }
