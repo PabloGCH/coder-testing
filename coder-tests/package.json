@@ -6,7 +6,8 @@
 	"scripts": {
 		"test": "nodemon src/server.ts",
 		"start": "ts-node src/server.ts",
-        "start-axios-client": "php -S localhost:4200 -t axios-client/",
+		"start-axios-client": "php -S localhost:4200 -t axios-client/",
+        "start-mocha-test": "MOCHA_TEST='true' ts-mocha tests/products.mocha.test.ts",
 		"start-mongo": "ts-node src/server.ts -p 4000 -d MONGO",
 		"start-sqlite": "ts-node src/server.ts -p 4000 -d SQLITE",
 		"start-fork": "nodemon src/server.ts -p 4000 -m FORK",
@@ -31,6 +32,7 @@
 		"@types/node": "^18.11.17",
 		"@types/passport": "^1.0.11",
 		"@types/passport-local": "^1.0.34",
+		"@types/supertest": "^2.0.12",
 		"bcrypt": "^5.1.0",
 		"compression": "^1.7.4",
 		"connect-mongo": "^4.6.0",
@@ -55,6 +57,7 @@
 	},
 	"devDependencies": {
 		"nodemon": "^2.0.20",
+		"ts-mocha": "^10.0.0",
 		"ts-node": "^10.9.1"
 	}
 }

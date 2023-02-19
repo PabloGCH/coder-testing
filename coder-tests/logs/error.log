@@ -54,3 +54,12 @@
 [2023-02-19T15:25:54.933] [ERROR] errors - { message: 'User not logged in', url: '/product', method: 'POST' }
 [2023-02-19T15:26:56.868] [ERROR] errors - { message: 'User not logged in', url: '/product', method: 'POST' }
 [2023-02-19T15:27:14.132] [ERROR] errors - { message: 'User not logged in', url: '/product', method: 'POST' }
+[2023-02-19T19:15:57.872] [ERROR] errors - { message: 'User not logged in', url: '/product', method: 'POST' }
+[2023-02-19T19:15:59.874] [ERROR] errors - { message: 'User not logged in', url: '/product/-1', method: 'PUT' }
+[2023-02-19T19:16:01.901] [ERROR] errors - { message: 'User not logged in', url: '/product/-1', method: 'DELETE' }
+[2023-02-19T19:16:01.901] [ERROR] errors - {
+  message: 'Failed to delete product',
+  error: { success: false, message: 'not_logged' },
+  url: '/product/-1',
+  method: 'DELETE'
+}

@@ -14,6 +14,8 @@ import { SocketService } from "./services/socket.service";
 import { RouterManager } from "./routing/router";
 import { logger } from "./services/logger.service";
 
+
+const app = express();
 //SERVER INITIALIZATION
 if(Config.RUN_MODE.toUpperCase() == "CLUSTER" && cluster.isPrimary) {
     console.log("Server initialized on cluster mode");
@@ -28,7 +30,6 @@ if(Config.RUN_MODE.toUpperCase() == "CLUSTER" && cluster.isPrimary) {
     if(Config.RUN_MODE.toUpperCase() == "FORK") {
         logger.info("Server initialized on fork mode");
     }
-    const app = express();
     Config.configServer(app);
     const server = app.listen(Config.PORT, ()=>{
         logger.info(`server listening on port ${Config.PORT}`);
@@ -37,5 +38,7 @@ if(Config.RUN_MODE.toUpperCase() == "CLUSTER" && cluster.isPrimary) {
     app.use("/", new RouterManager().getRouter());
 }
 
+
+export default app;
 
 
