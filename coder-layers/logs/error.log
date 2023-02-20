@@ -1,0 +1,25 @@
+[2023-01-29T17:34:35.721] [ERROR] errors - { message: 'Failed to get products', error: 'error log test' }
+[2023-01-29T17:34:36.908] [ERROR] errors - { message: 'Failed to get products', error: 'error log test' }
+[2023-01-29T17:34:45.657] [ERROR] errors - { message: 'Failed to get products', error: 'error log test' }
+[2023-01-29T17:34:46.592] [ERROR] errors - { message: 'Failed to get products', error: 'error log test' }
+[2023-02-20T01:51:25.745] [ERROR] errors - {
+  message: 'Failed to sent order from cart',
+  error: "Can't order a closed or pending cart"
+}
+[2023-02-20T01:51:51.881] [ERROR] errors - {
+  message: 'Failed to sent order from cart',
+  error: RestException [Error]: Authenticate
+      at success (/home/pablo/curso/coder-testing/coder-layers/node_modules/twilio/lib/base/Version.js:135:15)
+      at Promise_then_fulfilled (/home/pablo/curso/coder-testing/coder-layers/node_modules/q/q.js:766:44)
+      at Promise_done_fulfilled (/home/pablo/curso/coder-testing/coder-layers/node_modules/q/q.js:835:31)
+      at Fulfilled_dispatch [as dispatch] (/home/pablo/curso/coder-testing/coder-layers/node_modules/q/q.js:1229:9)
+      at Pending_become_eachMessage_task (/home/pablo/curso/coder-testing/coder-layers/node_modules/q/q.js:1369:30)
+      at RawTask.call (/home/pablo/curso/coder-testing/coder-layers/node_modules/asap/asap.js:40:19)
+      at flush (/home/pablo/curso/coder-testing/coder-layers/node_modules/asap/raw.js:50:29)
+      at processTicksAndRejections (node:internal/process/task_queues:78:11) {
+    status: 401,
+    code: 20003,
+    moreInfo: 'https://www.twilio.com/docs/errors/20003',
+    details: undefined
+  }
+}

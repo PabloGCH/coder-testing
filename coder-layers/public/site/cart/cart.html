@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Coder Market</title>
+		<link rel="stylesheet" href="./cart.css">
+		<script defer src="cart.js"></script>
+	</head>
+	<body>
+
+		<header>
+			<ul>
+				<li>
+					<a href="/site/home" >Products</a>
+				</li>
+				<li>
+					<a class="active-link">Cart</a>
+				</li>
+				<li>
+					<button onclick="logoff()" class="close_session">Close session</button>
+				</li>
+			</ul>
+		</header>
+		<main>
+			<div class="title-section">
+				<h1>Cart</h1>  
+				<span id="notification">Order sent</span>
+			</div>
+			<button onclick="orderCart()" id="order-button">Order</button>
+			<table class="cart-table">
+				<thead>
+					<tr>
+						<th>NAME</th>
+						<th>CODE</th>
+						<th>PRICE</th>
+					</tr>
+				</thead>
+				<tbody id="cart-body">
+					
+				</tbody>
+			</table>
+		</main>
+	</body>
+</html>

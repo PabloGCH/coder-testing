@@ -1,0 +1,32 @@
+{
+	"lastId": 3,
+	"products": [
+		{
+			"id": 1,
+			"name": "Lapiz",
+			"price": 20,
+			"imgUrl": "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fimagenes.4ever.eu%2Fdata%2Fdownload%2Fotros%2Flapiz-231955.jpg%3Fno-logo&f=1&nofb=1&ipt=d738408fd31197392616c48cec39b9ac76822e3eb4db0e6cb6dbd264c0cb89cc&ipo=images",
+			"description": "Es un Lapiz",
+			"stock": 150,
+			"timestamp": "1667012646511"
+		},
+		{
+			"id": 2,
+			"name": "Goma",
+			"price": 25,
+			"imgUrl": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpapeleriaana.com%2F19883-thickbox_default%2Fgoma-staedtler-mars-plastic5-2650.jpg&f=1&nofb=1&ipt=f37ec97f77c277ed1cdb34f93d0172196e79df60b8895413d0a5d3086cee9a44&ipo=images",
+			"description": "Es un Goma",
+			"stock": 120,
+			"timestamp": "1667012804277"
+		},
+		{
+			"id": 3,
+			"name": "Regla",
+			"price": 40,
+			"imgUrl": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fhttp2.mlstatic.com%2Fregla-regla-regla-reglas-D_NQ_NP_984689-MLM29566598219_032019-F.jpg&f=1&nofb=1&ipt=cd0a18e9c7c27e98d714b5f9c59e3aca777d8adda77cb335e061b6ae6934cd8d&ipo=images",
+			"description": "Es un Regla",
+			"stock": 100,
+			"timestamp": "1667012907248"
+		}
+	]
+}
