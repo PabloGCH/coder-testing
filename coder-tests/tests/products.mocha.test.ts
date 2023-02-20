@@ -1,6 +1,3 @@
-import assert from "assert";
-import axios from "axios";
-
 import app from "../src/server"
 import supertest from "supertest"
 import { expect } from "chai"
@@ -10,32 +7,29 @@ log4js.shutdown();
 const request = supertest(app)
 
 
-const BACKURL = "http://localhost:8080/api";
-const axiosInstance = axios.create({
-    baseURL: BACKURL,
-});
-
-
-
-
 let id = -1;
 describe("LOGIN TEST", () => {
     it("USER WAS LOGGED", (done) => {
-        logIn().then(() => {
-            assert.ok(axiosInstance.defaults.headers.Cookie);
-        });
+        let logData :any = {
+            username: "asd",
+            password: "123",
+        };
+        request.post(`/api/auth/login`)
+        .send(logData)
+        .then((res) => {
+            expect(res.status).to.equal(200)
+            done();
+        }).catch(done)
     });
 });
-
 describe("GET PRODUCTS", () => {
-    let response;
     it("GET PRODUCTS", (done) => {
-        axiosInstance.get(`${BACKURL}/products/products`)
-        .then((res) => {
-            response = res;
-            assert.ok(response.data.products);
+        request.get(`/api/products/products`)
+        .then((res :any) => {
+            expect(res.body.success).to.ok;
+            expect(res.body.products).to.be.an("array");
             done();
-        })
+        }).catch(done)
     })
 });
 describe("ADD PRODUCT", () => {
@@ -46,25 +40,25 @@ describe("ADD PRODUCT", () => {
     };
     let response :any;
     it("REQUEST WAS SUCCESFUL", (done) => {
-        axiosInstance.post(`${BACKURL}/products/product`, newProduct)
+        request.post(`/api/products/product`).send(newProduct)
         .then((res) => {
             response = res;
-            assert.ok(response && response.data && response.data.success);
-            id = (response.data.newProduct._id || response.data.newProduct.id) || -1;
+            expect(res.status).to.equal(200);
+            expect(res.body.success).to.ok;
             done();
-        })
+        }).catch(done)
     });
     it("PRODUCT WAS ADDED", () => {
-        assert.ok(response.data && response.data.newProduct && response.data.newProduct._id);
+        expect(response.body.newProduct).to.ok;
     });
-    it("PRODUCT WAS ADDED WITH PROPER NAME", () => {
-        assert.ok(response.data && response.data.newProduct && response.data.newProduct.name === newProduct.name);
+    it("PRODUCT WAS ADDED WITH CORRECT NAME", () => {
+        expect(response.body.newProduct.name).to.equal(newProduct.name);
     });
-    it("PRODUCT WAS ADDED WITH PROPER PRICE", () => {
-        assert.ok(response.data && response.data.newProduct && response.data.newProduct.price === newProduct.price);
+    it("PRODUCT WAS ADDED WITH CORRECT PRICE", () => {
+        expect(response.body.newProduct.price).to.equal(newProduct.price);
     });
-    it("PRODUCT WAS ADDED WITH PROPER IMGURL", () => {
-        assert.ok(response.data && response.data.newProduct && response.data.newProduct.imgUrl === newProduct.imgUrl);
+    it("PRODUCT WAS ADDED WITH CORRECT IMGURL", () => {
+        expect(response.body.newProduct.imgUrl).to.equal(newProduct.imgUrl);
     });
 });
 
@@ -76,46 +70,40 @@ describe("UPDATE PRODUCT", () => {
     };
     let response :any;
     it("REQUEST WAS SUCCESFUL", (done) => {
-        axiosInstance.put(`${BACKURL}/products/product/${id}`, newProduct)
+        request.put(`/api/products/product/${id}`)
+        .send(newProduct)
         .then((res) => {
             response = res;
-            assert.ok(response && response.data && response.data.success);
-            id = (response.data.newProduct._id || response.data.newProduct.id) || -1;
+            expect(res.status).to.equal(200);
+            expect(res.body.success).to.ok;
+            id = res.body.newProduct._id || res.body.newProduct.id || -1;
             done();
         })
     });
-    it("PRODUCT WAS UPDATED WITH PROPER NAME", () => {
-        assert.ok(response.data && response.data.newProduct && response.data.newProduct.name === newProduct.name);
+    it("PRODUCT WAS UPDATED WITH CORRECT NAME", () => {
+        expect(response.body.newProduct.name).to.equal(newProduct.name);
     });
-    it("PRODUCT WAS UPDATED WITH PROPER PRICE", () => {
-        assert.ok(response.data && response.data.newProduct && response.data.newProduct.price === newProduct.price);
+    it("PRODUCT WAS UPDATED WITH CORRECT PRICE", () => {
+        expect(response.body.newProduct.price).to.equal(newProduct.price);
     });
-    it("PRODUCT WAS UPDATED WITH PROPER IMGURL", () => {
-        assert.ok(response.data && response.data.newProduct && response.data.newProduct.imgUrl === newProduct.imgUrl);
+    it("PRODUCT WAS UPDATED WITH CORRECT IMGURL", () => {
+        expect(response.body.newProduct.imgUrl).to.equal(newProduct.imgUrl);
     });
 });
 
 describe("DELETE PRODUCT", () => {
     it("REQUEST WAS SUCCESFUL", (done) => {
-        axiosInstance.delete(`${BACKURL}/products/product/${id}`)
-        .then((res) => {
-            assert.ok(res && res.data && res.data.success);
+        request.delete(`/api/products/product/${id}`)
+        .then((res :any) => {
+            expect(res.status).to.equal(200);
+            expect(res.body.success).to.ok;
             done();
-        });
+        })
+        .catch(done)
     });
 });
 
 
-async function logIn() {
-    let logData :any = {
-        username: "asd",
-        password: "123",
-    };
-    let response :any = await axiosInstance.post(`${BACKURL}/auth/login`, logData);
-    const cookie = response.headers["set-cookie"][0];
-    axiosInstance.defaults.headers.Cookie = cookie;
-    return;
-}
 
 
 

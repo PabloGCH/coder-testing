@@ -47,6 +47,7 @@ export const updateProduct :Controller =  async (req :Request|any, res :Response
         if(productManager === null) {
             throw new Error("Failed to create product manager");
         }
+        /*
         if(req.session.user == undefined){
             let error = {success: false, message: "not_logged"};
             errorLogger.error({
@@ -56,6 +57,7 @@ export const updateProduct :Controller =  async (req :Request|any, res :Response
             })
             throw error
         }
+        */
         let product = req.body;
         Object.assign(product, {price: parseInt(product.price)});
         productManager.update(product, req.params.id).then(() => {
@@ -87,6 +89,7 @@ export const deleteProduct :Controller =  async (req :Request|any, res :Response
         if(productManager === null) {
             throw new Error("Failed to create product manager");
         }
+        /*
         if(req.session.user == undefined){
             let error = {success: false, message: "not_logged"};
             errorLogger.error({
@@ -96,6 +99,7 @@ export const deleteProduct :Controller =  async (req :Request|any, res :Response
             })
             throw error
         }
+        */
         productManager.delete(id).then(() => {
             productManager.getObjects().then((products:any[]) => {
                 let productDTO :ProductDTO[] = products.map((product:any) => {return new ProductDTO(product)});
@@ -122,6 +126,7 @@ export const newProduct :Controller =  async (req :Request|any, res :Response|an
         if(productManager === null) {
             throw new Error("Failed to create product manager");
         }
+        /*
         if(req.session.user == undefined){
             let error = {success: false, message: "not_logged"};
             errorLogger.error({
@@ -129,27 +134,27 @@ export const newProduct :Controller =  async (req :Request|any, res :Response|an
                 url: req.url,
                 method: req.method
             })
-            res.send(error)
-        } else {
-            let product = req.body;
-            Object.assign(product, {price: parseInt(product.price)});
-            productManager.save(product).then((newProduct) => {
-                productManager.getObjects().then((products:any[]) => {
-                    let productDTO :ProductDTO[] = products.map((product:any) => {return new ProductDTO(product)});
-                    io.sockets.emit("products", {products: productDTO})
-                    res.send({success: true, newProduct: newProduct})
-                })
-            })
-            .catch(err => {
-                errorLogger.error({
-                    message: "Failed to add product",
-                    error: err,
-                    url: req.url,
-                    method: req.method
-                });
-                res.send({success: false, message: err || "Failed to add product"})
-            })
+            throw error
         }
+        */
+        let product = req.body;
+        Object.assign(product, {price: parseInt(product.price)});
+        productManager.save(product).then((newProduct) => {
+            productManager.getObjects().then((products:any[]) => {
+                let productDTO :ProductDTO[] = products.map((product:any) => {return new ProductDTO(product)});
+                io.sockets.emit("products", {products: productDTO})
+                res.send({success: true, newProduct: newProduct})
+            })
+        })
+        .catch(err => {
+            errorLogger.error({
+                message: "Failed to add product",
+                error: err,
+                url: req.url,
+                method: req.method
+            });
+            res.send({success: false, message: err || "Failed to add product"})
+        })
     }
     catch(err) {
         errorLogger.error({
